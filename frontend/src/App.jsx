@@ -20,7 +20,7 @@ const App = () => {
   useEffect(()=>{
     checkAuth();
   },[checkAuth])
-  console.log({authUser })
+  // console.log({authUser })
 
   if(isCheckingAuth && !authUser){
     return(
@@ -29,7 +29,7 @@ const App = () => {
       </div>
     )
   }
-  console.log(theme)
+  // console.log(theme)
   return (
    <div>
 
