@@ -12,30 +12,26 @@ const ChatContainer = () => {
   const { messages, getMessages, isMessagesLoading, selectedUser, subscribeToMessages, unsubscribeFromMessages } = useChatStore();
   const { authUser } = useAuthStore();
 
-  // ✅ Ref to handle auto scroll
+  
   const messageEndRef = useRef(null);
 
-  // ✅ Fetch messages & handle socket subscriptions
   useEffect(() => {
     if (!selectedUser?._id) return;
 
     getMessages(selectedUser._id);
     subscribeToMessages();
 
-    // Cleanup socket listener when chat changes
     return () => {
       unsubscribeFromMessages();
     };
-  }, [selectedUser?._id]); // Correct dependency
+  }, [selectedUser?._id]); 
 
-  // ✅ Auto scroll to latest message
   useEffect(() => {
     if (messageEndRef.current && messages.length > 0) {
       messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages]);
 
-  // ✅ Show loading skeleton
   if (isMessagesLoading) return (
     <div className='flex-1 flex flex-col overflow-auto'>
       <ChatHeader />
@@ -64,14 +60,12 @@ const ChatContainer = () => {
                 </div>
               </div>
 
-              {/* time */}
               <div className='chat-header mb-1'>
                 <time className='text-sm opacity-50 ml-1'>
                   {formatMessageTime(message.createdAt)}
                 </time>
               </div>
 
-              {/* chat message */}
               <div className='chat-bubble flex flex-col'>
                 {message.image && (
                   <img
@@ -83,7 +77,6 @@ const ChatContainer = () => {
                 {message.text && (<p>{message.text}</p>)}
               </div>
 
-              {/* scroll target element for auto-scroll */}
               {index === messages.length - 1 && (
                 <div ref={messageEndRef} />
               )}
