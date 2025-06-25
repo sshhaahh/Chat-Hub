@@ -5,6 +5,7 @@ import authRoutes from "./routes/auth.route.js"
 import messageRoutes from "./routes/message.route.js"
 import cors from 'cors'
 
+
 import cookieParser from "cookie-parser"
 import { app ,server} from "./lib/socket.js";
 

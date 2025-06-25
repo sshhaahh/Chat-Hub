@@ -46,8 +46,16 @@ const App = () => {
 
     </Routes>
 
+
+    <footer className="fixed bottom-0 left-0 w-full text-center text-sm py-2 bg-base-300 text-base-content shadow">
+  🚀 Made by <strong>SHAH</strong>
+</footer>
+
+
+
     <Toaster/>
 
+    
 
    </div>
   )
